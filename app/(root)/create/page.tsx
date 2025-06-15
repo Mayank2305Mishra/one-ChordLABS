@@ -39,9 +39,7 @@ const page = () => {
         summary: summaryData,
         podcast: podcastData,
       })
-      console.log(summaryData);
-      console.log(podcastData);
-      
+      // Convert speaker names to lowercase to match the expected type
     } catch (err) {
       console.error(err)
       alert('Error uploading file')
@@ -67,10 +65,17 @@ const page = () => {
       </div>
       <br />
       {result.summary.summary !== '' && (
-        <div className="mt-4 px-5">
+        <div className="mt-4 px-2">
           <h3 className="font-bold text-2xl">📄Short and Sweet Summary :</h3>
           <br />
           <p className="whitespace-pre-wrap text-base ">{result.summary?.summary}</p>
+          <br />
+          <br />
+          <h3 className="font-bold text-2xl">📄Podcast Script :</h3>
+          <br />
+          <p className="whitespace-pre-wrap text-base ">{result.podcast?.podcast_script}</p>
+          <br />
+          <br />
         </div>
       )}
       {loading && (
