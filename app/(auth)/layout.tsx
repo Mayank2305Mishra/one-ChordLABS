@@ -1,23 +1,37 @@
 import { ReactNode } from "react";
 import AuthLottie from "@/components/ChordUI/float/AuthLottie";
 import ChordIcon from "@/components/ChordIcon";
+import Image from "next/image"
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <main className="flex h-screen md:flex-row  flex-col">
-      <div className="md:w-1/2 flex flex-col items-center h-screen justify-center text-center">
-      <div className="flex flex-row gap-2">
-        <ChordIcon width={40} height={40}/>
-        <div className="h-[40px] pt-1 flex flex-col justify-center items-center text-center ">
-        <h1 className="text-2xl font-bold">ChordLABS</h1>
+    <div className="grid min-h-svh lg:grid-cols-2">
+      <div className="flex flex-col gap-4 p-6 md:p-10">
+        <div className="flex justify-center gap-2 md:justify-start">
+          <a href="#" className="flex items-center gap-2 font-medium">
+            <div className="flex size-6 items-center justify-center rounded-md">
+              <ChordIcon 
+                width={40}
+                height={40} />
+            </div>
+            Chord
+          </a>
+        </div>
+        <div className="flex flex-1 items-center justify-center">
+          <div className="w-full ">
+            {children}
+          </div>
         </div>
       </div>
-        {children}
+      <div className="bg-muted relative hidden lg:block">
+        <Image
+          src="/icons/echo.png"
+          alt="Image"
+          fill
+          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
       </div>
-      <div className="md:w-1/2 flex flex-col items-center h-screen justify-center text-center">
-        <AuthLottie />
-      </div>
-    </main>
+    </div>
   )
 }
 
