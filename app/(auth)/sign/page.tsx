@@ -1,7 +1,4 @@
 "use client"
-
-import Image from 'next/image'
-import Link from 'next/link'
 import React, { useState } from 'react'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -41,7 +38,7 @@ const page = () => {
     setloading(true);
     try {
      const newUser = await signUp(values) 
-     route.push('/userInfo_demographics')
+     route.push('/')
      toast(`Sign Up Success. You have been registered successfully with email ${values.email}`)
     } catch (error) {
       console.error('Sign up failed:', error)
@@ -49,10 +46,9 @@ const page = () => {
     } finally {
       setloading(false)
     }
-    console.log(values)
   }
   return (
-    <div className='dot px-2 h-full w-full text-white-1'>
+    <div className='dot px-2 h-full w-full'>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

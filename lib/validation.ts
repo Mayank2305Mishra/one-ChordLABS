@@ -16,3 +16,11 @@ export const signSchema = z.object({
         .min(8, "Password must be at least 8 characters")
         .max(50, "Password must be at most 50 characters"),
 })
+
+export const userDemographicsSchema = z.object({
+    dob: z.date(),
+    gender : z.enum(["male", "female", "other"]),
+    phone: z
+        .string()
+        .refine((phone)=>/^\+\d{10,15}$/.test(phone), "Invalid phone number")
+})
